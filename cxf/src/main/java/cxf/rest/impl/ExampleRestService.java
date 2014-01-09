@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cxf.rest;
+package cxf.rest.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,24 +10,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+
+import cxf.rest.RestService;
+import domain.Foo;
 
 /**
  * @author justin.hancock
  *
  */
-@XmlRootElement
 @Path("/example")
 @Service("exampleRestService")
-public class ExampleRestService
+public class ExampleRestService implements RestService
 {
 
-	/**
-	 * 
-	 */
 	public ExampleRestService()
 	{
 		super();
@@ -43,7 +41,7 @@ public class ExampleRestService
 	
 	@GET
 	@Path("/foo")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public List<Foo> foo()
 	{
 		List<Foo> myFoo = new ArrayList<Foo>();

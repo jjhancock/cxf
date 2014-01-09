@@ -1,4 +1,4 @@
-package cxf.rest;
+package domain;
 
 public class Foo
 {
