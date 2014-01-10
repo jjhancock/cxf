@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cxf.rest.impl;
+package com.cxf.rest.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import javax.ws.rs.Produces;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
-import cxf.rest.RestService;
-import domain.Foo;
+import com.cxf.domain.Foo;
+import com.cxf.rest.RestService;
 
 /**
  * @author justin.hancock

@@ -1,4 +1,4 @@
-package domain;
+package com.cxf.domain;
 
 public class Foo
 {
