@@ -6,17 +6,20 @@ package com.cxf.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cxf.domain.SearchObject;
+import com.cxf.repo.SearchObjectRepo;
 
 /**
  * @author justin.hancock
  *
  */
+@Service("searchObjectService")
 public class SearchObjectServiceImpl implements SearchObjectService
 {
 	@Autowired
-	private SearchObjectService soService;
+	private SearchObjectRepo soRepo;
 
 	/**
 	 * 
@@ -29,13 +32,13 @@ public class SearchObjectServiceImpl implements SearchObjectService
 	@Override
 	public SearchObject saveAndFlush(SearchObject so)
 	{
-		return soService.saveAndFlush(so);
+		return soRepo.saveAndFlush(so);
 	}
 
 	@Override
 	public List<SearchObject> findByOwningSearchConfig(Long owningSearchConfigId)
 	{
-		return soService.findByOwningSearchConfig(owningSearchConfigId);
+		return soRepo.findByOwningSearchConfig(owningSearchConfigId);
 	}
 
 }

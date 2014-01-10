@@ -24,29 +24,29 @@ import com.cxf.service.SearchConfigService;
 public class SearchConfigRestService
 {
 	
-	@Autowired
-	private SearchConfigService scService;
+	//@Autowired
+	//private SearchConfigService scService;
 	
 	public SearchConfigRestService()
 	{
 		super();
 	}
 	
-	@GET
-	@Path("/get/{id}")
-	@Produces("application/json")
-	public SearchConfig get(@PathParam("id") Long userId)
-	{
-		return scService.findByOwningUserId(userId);
-	}
-	
-	@POST
-	@Path("/save")
-	@Produces("application/json")
-	public Boolean saveSearchConfig(@PathParam("searchConfig") SearchConfig sc)
-	{		
-		SearchConfig savedConfig = scService.saveAndFlush(sc);		
-		return (savedConfig == null ? Boolean.FALSE : Boolean.TRUE);
-	}
+//	@GET
+//	@Path("/get/{id}")
+//	@Produces("application/json")
+//	public SearchConfig get(@PathParam("id") Long userId)
+//	{
+//		return scService.findByOwningUserId(userId);
+//	}
+//	
+//	@POST
+//	@Path("/save")
+//	@Produces("application/json")
+//	public Boolean saveSearchConfig(@PathParam("searchConfig") SearchConfig sc)
+//	{		
+//		SearchConfig savedConfig = scService.saveAndFlush(sc);		
+//		return (savedConfig == null ? Boolean.FALSE : Boolean.TRUE);
+//	}
 
 }

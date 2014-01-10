@@ -18,20 +18,20 @@ import com.cxf.service.SearchObjectService;
 public class SearchObjectRestService
 {
 	
-	@Autowired
-	private SearchObjectService soService;
+	//@Autowired
+	//private SearchObjectService soService;
 
 	public SearchObjectRestService()
 	{
 		super();
 	}
 	
-	@GET
-	@Path("/get/all/{id}")
-	@Produces("application/json")
-	public List<SearchObject> getAll(@PathParam("id") Long owningSearchConfigId)
-	{
-		return soService.findByOwningSearchConfig(owningSearchConfigId);
-	}
+//	@GET
+//	@Path("/get/all/{id}")
+//	@Produces("application/json")
+//	public List<SearchObject> getAll(@PathParam("id") Long owningSearchConfigId)
+//	{
+//		return soService.findByOwningSearchConfig(owningSearchConfigId);
+//	}
 
 }

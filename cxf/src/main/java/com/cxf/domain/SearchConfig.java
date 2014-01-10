@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -22,6 +23,7 @@ import org.hibernate.annotations.Cascade;
 public class SearchConfig extends DomainObject
 {
 	private List<SearchObject> searchObjects;
+	private User owningUser;
 
 	public SearchConfig()
 	{
@@ -41,4 +43,16 @@ public class SearchConfig extends DomainObject
 		this.searchObjects = searchObjects;
 	}
 
+	@OneToOne
+	@JoinColumn(name = "OWNING_USER_ID", nullable = false)
+	public User getOwningUser()
+	{
+		return this.owningUser;
+	}
+	
+	public void setOwningUser(User anOwner)
+	{
+		this.owningUser = anOwner;
+	}
+	
 }

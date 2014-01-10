@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,9 +30,11 @@ public class SearchObject extends DomainObject implements Serializable
 	private static final long serialVersionUID = 7870640217944440758L;
 	private List<City> cities;
 	private Date datePosted;
+	private SearchConfig owningSearchConfig;
 	private String postingBody;
 	private List<ImageLink> imageLinks;
 	private String title;
+	
 
 	public SearchObject()
 	{
@@ -71,8 +74,18 @@ public class SearchObject extends DomainObject implements Serializable
 	{
 		this.datePosted = aDate;
 	}
-
 	
+	@OneToOne
+	public SearchConfig getOwningSearchConfig()
+	{
+		return owningSearchConfig;
+	}
+
+	public void setOwningSearchConfig(SearchConfig owningSearchConfig)
+	{
+		this.owningSearchConfig = owningSearchConfig;
+	}
+
 	@Column(name = "POSTING_BODY")
 	public String getPostingBody()
 	{

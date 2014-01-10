@@ -76,6 +76,7 @@
 
 	<jaxrs:server id="restContainer" address="/">
 		<jaxrs:serviceBeans>
+		    <ref bean="searchConfigRestService" />
 			<ref bean="exampleRestService" />
 			<ref bean="userRestService" />
 		</jaxrs:serviceBeans>

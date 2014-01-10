@@ -17,12 +17,9 @@ import com.cxf.repo.UserRepo;
 @Service("userService")
 public class UserServiceImpl implements UserService
 {
-
 	@Autowired
 	private UserRepo uRepo;
-	/**
-	 * 
-	 */
+	
 	public UserServiceImpl()
 	{
 		super();
