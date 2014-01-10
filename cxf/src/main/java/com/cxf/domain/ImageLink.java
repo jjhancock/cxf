@@ -22,7 +22,7 @@ public class ImageLink extends DomainObject implements Serializable
 	private static final long serialVersionUID = 8225708190410424551L;
 	
 	private String link;
-	private SearchObjectImpl owningSearchObject;
+	private SearchObject owningSearchObject;
 
 	public ImageLink()
 	{
@@ -42,12 +42,12 @@ public class ImageLink extends DomainObject implements Serializable
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "OWNING_SEARCH_OBJECT_ID", nullable = false)
-	public SearchObjectImpl getOwningSearchObject()
+	public SearchObject getOwningSearchObject()
 	{
 		return this.owningSearchObject;
 	}
 	
-	public void setOwningSearchObject(SearchObjectImpl anOwningSearchObject)
+	public void setOwningSearchObject(SearchObject anOwningSearchObject)
 	{
 		this.owningSearchObject = anOwningSearchObject;
 	}

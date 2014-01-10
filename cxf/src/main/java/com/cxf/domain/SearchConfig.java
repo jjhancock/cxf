@@ -28,7 +28,7 @@ public class SearchConfig extends DomainObject
 		super();
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, targetEntity = SearchObjectImpl.class) 
+	@OneToMany(fetch = FetchType.LAZY, targetEntity = SearchObject.class) 
 	@JoinColumn(name = "SEARCH_CONFIG_ID")
 	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
 	public List<SearchObject> getSearchObjects()
