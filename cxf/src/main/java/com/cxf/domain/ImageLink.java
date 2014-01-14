@@ -41,7 +41,7 @@ public class ImageLink extends DomainObject implements Serializable
 	}
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "OWNING_SEARCH_OBJECT_ID", nullable = false)
+	@JoinColumn(name = "OWN_SEARCH_OBJ_ID", nullable = false)
 	public SearchObject getOwningSearchObject()
 	{
 		return this.owningSearchObject;

@@ -23,7 +23,6 @@ public class City extends DomainObject implements Serializable
 	private static final long serialVersionUID = 9132029158313482885L;
 	private String cityCode;
 	private String cityName;
-	private SearchObject owningSearchObject;
 	
 	/**
 	 * 
@@ -55,16 +54,16 @@ public class City extends DomainObject implements Serializable
 		this.cityName = cityName;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = SearchObject.class)
-	@JoinColumn(name = "OWNING_SEARCH_OBJ_ID")
-	public SearchObject getOwningSearchObject()
-	{
-		return this.owningSearchObject;
-	}
-	
-	public void setOwningSearchObject(SearchObject aSearchObject)
-	{
-		this.owningSearchObject = aSearchObject;		
-	}
+//	@ManyToOne(fetch = FetchType.LAZY, targetEntity = SearchObject.class)
+//	@JoinColumn(name = "OWNING_SEARCH_OBJ_ID")
+//	public SearchObject getOwningSearchObject()
+//	{
+//		return this.owningSearchObject;
+//	}
+//	
+//	public void setOwningSearchObject(SearchObject aSearchObject)
+//	{
+//		this.owningSearchObject = aSearchObject;		
+//	}
 
 }

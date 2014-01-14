@@ -22,7 +22,7 @@ import org.hibernate.annotations.Cascade;
 @Table(name = "SEARCH_CONFIG")
 public class SearchConfig extends DomainObject
 {
-	private List<SearchObject> searchObjects;
+	private List<SearchCriteria> searchCrits;
 	private User owningUser;
 
 	public SearchConfig()
@@ -30,17 +30,17 @@ public class SearchConfig extends DomainObject
 		super();
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, targetEntity = SearchObject.class) 
+	@OneToMany(fetch = FetchType.LAZY, targetEntity = SearchCriteria.class) 
 	@JoinColumn(name = "SEARCH_CONFIG_ID")
 	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
-	public List<SearchObject> getSearchObjects()
+	public List<SearchCriteria> getSearchCriteria()
 	{
-		return searchObjects;
+		return searchCrits;
 	}
 
-	public void setSearchObjects(List<SearchObject> searchObjects)
+	public void setSearchCriteria(List<SearchCriteria> aSearchCrits)
 	{
-		this.searchObjects = searchObjects;
+		this.searchCrits = aSearchCrits;
 	}
 
 	@OneToOne

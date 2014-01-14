@@ -10,7 +10,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,13 +29,12 @@ import org.hibernate.annotations.Cascade;
 public class SearchObject extends DomainObject implements Serializable
 {	
 	private static final long serialVersionUID = 7870640217944440758L;
-	private List<City> cities;
+	private City city;
 	private Date datePosted;
 	private SearchConfig owningSearchConfig;
 	private String postingBody;
 	private List<ImageLink> imageLinks;
-	private String title;
-	
+	private String title;	
 
 	public SearchObject()
 	{
@@ -47,10 +47,11 @@ public class SearchObject extends DomainObject implements Serializable
 	 * @see domain.SearchObject#getCities()
 	 *
 	 */
-	@ManyToMany(fetch = FetchType.LAZY, targetEntity = City.class)
-	public List<City> getCities()
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class)
+	@JoinColumn(name = "CITY_ID")
+	public City getCity()
 	{
-		return cities;
+		return city;
 	}
 
 	/*
@@ -58,9 +59,9 @@ public class SearchObject extends DomainObject implements Serializable
 	 * 
 	 * @see domain.SearchObject#setCities(java.util.List)
 	 */
-	public void setCities(List<City> theCities)
+	public void setCity(City theCity)
 	{
-		this.cities = theCities;
+		this.city = theCity;
 	}
 
 	@Column(name = "DATE_POSTED", nullable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -76,6 +77,7 @@ public class SearchObject extends DomainObject implements Serializable
 	}
 	
 	@OneToOne
+	@JoinColumn(name = "OWNING_SEARCH_CONFIG_ID")
 	public SearchConfig getOwningSearchConfig()
 	{
 		return owningSearchConfig;
@@ -91,13 +93,11 @@ public class SearchObject extends DomainObject implements Serializable
 	{
 		return this.postingBody;
 	}
-
 	
 	public void setPostingBody(String aPostingBody)
 	{
 		this.postingBody = aPostingBody;
 	}
-
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "owningSearchObject", targetEntity = ImageLink.class)
 	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
@@ -105,7 +105,6 @@ public class SearchObject extends DomainObject implements Serializable
 	{
 		return this.imageLinks;
 	}
-
 	
 	public void setImageLinks(List<ImageLink> theImages)
 	{
@@ -122,7 +121,5 @@ public class SearchObject extends DomainObject implements Serializable
 	{
 		this.title = aTitle;
 	}
-
-	
 
 }
