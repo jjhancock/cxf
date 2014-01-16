@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-	xmlns:context="http://www.springframework.org/schema/context" 
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
 	    http://www.springframework.org/schema/beans 
 	    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -18,65 +15,66 @@
 	    http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd 
         http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd" >
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-    <context:property-placeholder location="classpath:config.properties"></context:property-placeholder>
+	<context:property-placeholder location="classpath:config.properties"></context:property-placeholder>
 
-    <jpa:repositories base-package="com.cxf.repo" />
+	<jpa:repositories base-package="com.cxf.repo" />
 
-    <context:annotation-config></context:annotation-config>
-    
-    <context:component-scan base-package="com.cxf"></context:component-scan>   
-        
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
-    
-    <mvc:annotation-driven />    
-    
-    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-        id="dataSource" p:driverClassName="${jdbc.driverClassName}"
-        p:password="${jdbc.password}" p:url="${jdbc.url}" p:username="${jdbc.username}">
-    </bean>
+	<context:annotation-config></context:annotation-config>
 
-    <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
-        id="sessionFactory">
-        <property name="dataSource" ref="dataSource"></property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-            </props>
-        </property>
-        <property name="packagesToScan" value="com.cxf.rest.impl"></property>
-    </bean>
-    
-    <bean id="entityManagerFactory"
-        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-        p:persistenceXmlLocation="classpath*:META-INF/persistence.xml"
-        p:persistenceUnitName="scraperPersistence" p:dataSource-ref="dataSource"
-        p:jpaVendorAdapter-ref="hibernateVendor" />
+	<context:component-scan base-package="com.cxf"></context:component-scan>
 
-    <bean id="hibernateVendor"
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-        p:showSql="false" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
+	<mvc:annotation-driven />
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="dataSource" p:driverClassName="${jdbc.driverClassName}"
+		p:password="${jdbc.password}" p:url="${jdbc.url}" p:username="${jdbc.username}">
+	</bean>
 
-    <tx:annotation-driven />
+	<bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		id="sessionFactory">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="com.cxf.rest.impl"></property>
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:persistenceXmlLocation="classpath*:META-INF/persistence.xml"
+		p:persistenceUnitName="scraperPersistence" p:dataSource-ref="dataSource"
+		p:jpaVendorAdapter-ref="hibernateVendor" />
+
+	<bean id="hibernateVendor"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+		p:showSql="false" />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<tx:annotation-driven />
 
 	<context:component-scan base-package="com.cxf.rest.impl" />
 
 	<jaxrs:server id="restContainer" address="/">
 		<jaxrs:serviceBeans>
-		    <ref bean="searchConfigRestService" />
+			<ref bean="cityRestService" />
+			<ref bean="searchConfigRestService" />
 			<ref bean="exampleRestService" />
 			<ref bean="userRestService" />
 		</jaxrs:serviceBeans>

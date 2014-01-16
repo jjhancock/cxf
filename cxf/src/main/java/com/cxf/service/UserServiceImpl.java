@@ -32,4 +32,23 @@ public class UserServiceImpl implements UserService
 		return uRepo.findById(id);
 	}
 
+	@Override
+	public User findByUserIdAndVerified(String username, boolean verified)
+	{
+		return uRepo.findByUserIdAndVerified(username, verified);
+	}
+
+	@Override
+	@Transactional
+	public User saveAndFlush(User u)
+	{
+		return uRepo.saveAndFlush(u);
+	}
+
+	@Override
+	public User findByUserId(String userId)
+	{
+		return uRepo.findByUserId(userId);
+	}
+
 }

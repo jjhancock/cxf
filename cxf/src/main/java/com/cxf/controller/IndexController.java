@@ -29,10 +29,10 @@ public class IndexController
 		super();
 	}
 	
-	@RequestMapping(value="index.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/index.do", method = RequestMethod.GET)
 	public ModelAndView goHome()
 	{
-		return new ModelAndView("index");
+		return new ModelAndView("newEmp");
 	}
 
 }
