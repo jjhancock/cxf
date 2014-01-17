@@ -1,4 +1,3 @@
 <script>
-alert("about to redirect");
-location.href='index.do';
+location.href='login.do';
 </script>

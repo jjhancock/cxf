@@ -25,6 +25,7 @@
 
 		<!-- RESTful services -->
 		<intercept-url pattern="/rest/*" access="hasRole('ROLE_ANONYMOUS')" />
+		<intercept-url pattern="*" access="hasRole('ROLE_USER')" />
 
 		<!-- <intercept-url pattern="/user.do" access="hasRole('ROLE_USER')" /> 
 			<intercept-url pattern="/admin.do" access="hasRole('ROLE_ADMIN')" /> -->

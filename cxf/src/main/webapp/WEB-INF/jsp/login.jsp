@@ -1,7 +1,7 @@
 
-<div class="row" style="margin-top: 20px margin-left:20px;">
+<div class="row" style="margin-top: 20px margin-left:20px; margin-bottom:20px;">
 	<div
-		class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-3">
+		class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
 		<form role="form">
 			<fieldset>
 				<h2>Please Sign In</h2>
@@ -30,6 +30,6 @@
 					</div>
 				</div>
 			</fieldset>
-		</form>
+		</form><br/><br/><br/><br/>
 	</div>
 </div>
