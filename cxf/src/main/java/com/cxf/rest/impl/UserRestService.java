@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.cxf.domain.User;
+import com.cxf.service.RoleService;
 import com.cxf.service.UserService;
 import com.cxf.web.StatusResponse;
 
@@ -26,6 +27,9 @@ import com.cxf.web.StatusResponse;
 @Service("userRestService")
 public class UserRestService
 {
+	@Autowired
+	private RoleService rService;
+	
 	@Autowired
 	private UserService uService;
 	
@@ -52,6 +56,7 @@ public class UserRestService
 		if (uService.findByUserId(user.getUserId()) == null)
 		{				
 			user.setVerified(Boolean.TRUE);
+			user.addRole(rService.findByRoleName("ROLE_USER"));
 			uService.saveAndFlush(user);
 			result = true;
 		}		

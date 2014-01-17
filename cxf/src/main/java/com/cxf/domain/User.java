@@ -5,6 +5,7 @@ package com.cxf.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -150,7 +151,7 @@ public class User extends DomainObject implements Serializable
 	@ManyToMany(fetch = FetchType.EAGER)
 	public Set<Role> getRoles()
 	{
-		return this.roles;
+		return (this.roles == null ? new HashSet<Role>() : this.roles);
 	}
 
 	public void setRoles(Set<Role> theRoles)
