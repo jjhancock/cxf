@@ -14,5 +14,11 @@ import com.cxf.domain.User;
 public interface UserRepo extends JpaRepository<User, Long>
 {
 	User findById(Long id);
+	
+	User findByUserId(String userId);
+	
+	User findByUserIdAndVerified(String username, boolean verified);
+	
+	User saveAndFlush(User u);
 
 }

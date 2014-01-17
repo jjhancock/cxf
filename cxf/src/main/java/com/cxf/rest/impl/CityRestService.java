@@ -3,9 +3,18 @@
  */
 package com.cxf.rest.impl;
 
-import javax.ws.rs.Path;
+import java.util.List;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+
+import com.cxf.domain.City;
+import com.cxf.service.CityService;
 
 /**
  * @author justin.hancock
@@ -15,6 +24,9 @@ import org.springframework.stereotype.Service;
 @Service("cityRestService")
 public class CityRestService
 {
+	
+	@Autowired
+	private CityService cService;
 
 	/**
 	 * 
@@ -23,5 +35,14 @@ public class CityRestService
 	{
 		super();
 	}
+	
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
+	public List<City> getCities()
+	{
+		return cService.findAll();		
+	}
+
 
 }

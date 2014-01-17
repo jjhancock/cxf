@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/security
+                        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<http auto-config="true" use-expressions="true">		
+
+		<form-login login-page="/login.do" default-target-url="/dashboard.do"
+			authentication-failure-url="/login.do?login_error=true" />
+		<intercept-url pattern="/login.do" access="permitAll" />
+
+		<intercept-url pattern="/signup.do" access="permitAll" />
+
+		<intercept-url pattern="/js/*" access="permitAll" />
+		<intercept-url pattern="/css/*" access="permitAll" />
+		<intercept-url pattern="/css/bootstrap/*" access="permitAll" />
+		<intercept-url pattern="/css/datatables/*" access="permitAll" />
+		<intercept-url pattern="/js/datatables/*" access="permitAll" />
+		<intercept-url pattern="/css/images/*" access="permitAll" />
+		<intercept-url pattern="/images/*" access="permitAll" />
+
+
+		<!-- RESTful services -->
+		<intercept-url pattern="/rest/*" access="hasRole('ROLE_ANONYMOUS')" />
+
+		<!-- <intercept-url pattern="/user.do" access="hasRole('ROLE_USER')" /> 
+			<intercept-url pattern="/admin.do" access="hasRole('ROLE_ADMIN')" /> -->
+		<!-- <custom-filter ref="ajaxTimeoutRedirectFilter" after="EXCEPTION_TRANSLATION_FILTER"/> -->
+
+		<session-management>
+			<concurrency-control max-sessions="1" />
+		</session-management>
+
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder hash="md5" />
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- <authentication-manager> <authentication-provider user-service-ref="userDetailsService"> 
+		<password-encoder hash="md5" /> </authentication-provider> </authentication-manager> -->
+
+
+
+</b:beans>
