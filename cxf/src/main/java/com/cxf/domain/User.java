@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Sort;
 
@@ -174,6 +175,7 @@ public class User extends DomainObject implements Serializable
 		this.searchConfig = searchConfig;
 	}
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, targetEntity = SearchObject.class) 
 	@JoinColumn(name = "SEARCH_OBJECT_ID")
 	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.cxf.domain.User;
 import com.cxf.service.UserService;
+import com.cxf.web.StatusResponse;
 
 /**
  * @author justin.hancock
@@ -45,16 +46,16 @@ public class UserRestService
 	@Path("/new")
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
 	@Produces("application/json")
-	public String saveUser(User user)
+	public StatusResponse saveUser(User user)
 	{
-		String result = "fail";
+		Boolean result = false;
 		if (uService.findByUserId(user.getUserId()) == null)
 		{				
 			user.setVerified(Boolean.TRUE);
 			uService.saveAndFlush(user);
-			result = "true";
+			result = true;
 		}		
-		return result;
+		return new StatusResponse(result);
 	}
 
 }
