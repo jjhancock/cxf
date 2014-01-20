@@ -77,7 +77,7 @@
 <div class="row" id="parent" style="margin-top:10px; padding:5px;">    
     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
     <form>
-	    <h2>New User</h2>       
+	    <h2>New Account</h2>       
 	    <input type="hidden" name="id" value="1" />
 	    <label>First Name</label> <input type="text" name="firstName" id="firstName" class="form-control input-lg" value="" placeholder="First Name" required /><br/>
 	    <label>Last Name</label> <input type="text" name="lastName" id="lastName" class="form-control input-lg" value="" placeholder="Last Name" required /><br/>

@@ -31,7 +31,7 @@
 							value="Sign In">
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<a href="" class="btn btn-lg btn-primary btn-block">Register</a>
+						<a href="newEmp.do" class="btn btn-lg btn-primary btn-block">Register</a>
 					</div>
 				</div>
 			</fieldset>

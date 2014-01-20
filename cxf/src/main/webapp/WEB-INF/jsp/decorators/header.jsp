@@ -10,7 +10,7 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="#">CXF Spring Demo</a>
+	    <a class="navbar-brand" href="dashboard.do">CXF Spring Demo</a>
 	  </div>
 	
 	  <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +38,7 @@
 	      <button type="submit" class="btn btn-default">Submit</button>
 	    </form>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/j_spring_security_logout">Logout</a></li>
+	      <li><a href="j_spring_security_logout">Logout</a></li>
 	      <li class="dropdown">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
 	        <ul class="dropdown-menu">
