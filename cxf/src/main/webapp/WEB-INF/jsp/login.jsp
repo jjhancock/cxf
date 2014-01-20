@@ -1,16 +1,21 @@
+<%@include file="../../../includes/taglib_includes.jsp" %>
+
 
 <div class="row" style="margin-top: 20px margin-left:20px; margin-bottom:20px;">
+    
 	<div
 		class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-		<form role="form">
-			<fieldset>
-				<h2>Please Sign In</h2>
+		<form role="form" action="<c:url value='j_spring_security_check'/>" method="POST">
+			<fieldset>			         
+				<h2>
+				    <span style="color: red"><c:out value="${param.login_error ? 'Invalid Credentials' : ''}" /></span><br/>
+				    Please Sign In</h2>
 				<div class="form-group">
-					<input type="email" name="email" id="email"
-						class="form-control input-lg" placeholder="Email Address">
+					<input type="text" name="j_username" id="j_username"
+						class="form-control input-lg" placeholder="User Id">
 				</div>
 				<div class="form-group">
-					<input type="password" name="password" id="password"
+					<input type="password" name="j_password" id="j_password"
 						class="form-control input-lg" placeholder="Password">
 				</div>
 				<span class="button-checkbox">
