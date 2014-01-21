@@ -1,7 +1,7 @@
-<%@include file="../../../includes/taglib_includes.jsp" %>
+<%@include file="includes/taglib_includes.jsp" %>
 
 
-<div class="row" style="margin-top: 20px margin-left:20px; margin-bottom:20px;">
+<div class="row" style="margin-top: 20px margin-left:20px; margin-bottom:20px; padding: 2.5%">
     
 	<div
 		class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">

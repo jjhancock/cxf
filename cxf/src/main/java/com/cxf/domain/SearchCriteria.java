@@ -20,6 +20,7 @@ import javax.persistence.Table;
 public class SearchCriteria extends DomainObject
 {
 
+	private String category;
 	private List<City> cities;
 	private String keyword;
 	
@@ -28,6 +29,17 @@ public class SearchCriteria extends DomainObject
 		super();
 	}
 	
+	@Column(name = "CATEGORY", nullable = false)
+	public String getCategory()
+	{
+		return category;
+	}
+
+	public void setCategory(String category)
+	{
+		this.category = category;
+	}
+
 	@ManyToMany(fetch = FetchType.LAZY, targetEntity = City.class)
 	public List<City> getCities()
 	{

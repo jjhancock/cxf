@@ -1,4 +1,4 @@
-<%@include file="../../includes/taglib_includes.jsp"%>
+<%@include file="includes/taglib_includes.jsp"%>
 
 <script type="text/javascript">
     function submitForm() {

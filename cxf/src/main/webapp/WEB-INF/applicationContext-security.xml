@@ -21,7 +21,9 @@
 		<intercept-url pattern="/js/datatables/*" access="permitAll" />
 		<intercept-url pattern="/css/images/*" access="permitAll" />
 		<intercept-url pattern="/images/*" access="permitAll" />
-
+		
+		<intercept-url pattern="/dashboard.do" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/viewSearchCrits.do" access="hasRole('ROLE_USER')" />
 
 		<!-- RESTful services -->
 		<intercept-url pattern="/rest/*" access="hasRole('ROLE_ANONYMOUS')" />
@@ -32,7 +34,7 @@
 		<!-- <custom-filter ref="ajaxTimeoutRedirectFilter" after="EXCEPTION_TRANSLATION_FILTER"/> -->
 
 		<session-management>
-			<concurrency-control max-sessions="1" />
+			<concurrency-control max-sessions="2" />
 		</session-management>
 
 	</http>

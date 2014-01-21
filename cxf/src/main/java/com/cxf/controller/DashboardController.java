@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DashboardController
 {
-
 	private static final Logger LOG = Logger.getLogger(DashboardController.class);
 	/**
 	 * 
