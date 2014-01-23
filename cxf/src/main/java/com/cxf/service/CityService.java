@@ -14,4 +14,6 @@ import com.cxf.domain.City;
 public interface CityService
 {
 	List<City> findAll();
+	
+	City findById(Long id);
 }

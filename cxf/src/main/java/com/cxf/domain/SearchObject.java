@@ -31,7 +31,7 @@ public class SearchObject extends DomainObject implements Serializable
 	private static final long serialVersionUID = 7870640217944440758L;
 	private City city;
 	private Date datePosted;
-	private SearchConfig owningSearchConfig;
+	private SearchCriteria owningSearchCriteria;
 	private String postingBody;
 	private List<ImageLink> imageLinks;
 	private String title;	
@@ -77,15 +77,15 @@ public class SearchObject extends DomainObject implements Serializable
 	}
 	
 	@OneToOne
-	@JoinColumn(name = "OWNING_SEARCH_CONFIG_ID")
-	public SearchConfig getOwningSearchConfig()
+	@JoinColumn(name = "OWNING_SEARCH_CRIT_ID")
+	public SearchCriteria getOwningSearchCriteria()
 	{
-		return owningSearchConfig;
+		return owningSearchCriteria;
 	}
 
-	public void setOwningSearchConfig(SearchConfig owningSearchConfig)
+	public void setOwningSearchCriteria(SearchCriteria anOwningSearchCriteria)
 	{
-		this.owningSearchConfig = owningSearchConfig;
+		this.owningSearchCriteria = anOwningSearchCriteria;
 	}
 
 	@Column(name = "POSTING_BODY")

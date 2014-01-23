@@ -1,33 +1,34 @@
 <%@include file="includes/taglib_includes.jsp"%>
-
+here: <sec:authentication property="principal.username"/>
 <script type="text/javascript">
     function submitForm() {
-        
+        alert("submitForm()?");
         var hasErrors = false;
-        if (!$("#critCity").val())
+        if (!$("#cityId").val())
         {
-            $("#critCity").addClass("ui-state-error");
+            $("#cityId").addClass("ui-state-error");
             hasErrors = true;
         }        
-        if (!$("#critCat").val())
+        if (!$("#category").val())
         {
-            $("#critCat").addClass("ui-state-error");
+            $("#category").addClass("ui-state-error");
             hasErrors = true;
         }
-        if (!$("#critKeyword").val())
+        if (!$("#keyword").val())
         {
-            $("#critKeyword").addClass("ui-state-error");
+            $("#keyword").addClass("ui-state-error");
             hasErrors = true;   
         }        
         
+        alert("hasErrors = " + hasErrors);
         if (hasErrors == false)
         {
             // clear all errors
             $("input, text").removeClass("ui-state-error");
             var searchCrit = {
-                city: $("#critCity").val(),
-                category: $("#critCat").val(),
-                keyword: $("#critKeyword").val()
+                cityId: $("#cityId").val(),
+                category: $("#category").val(),
+                keyword: $("#keyword").val()
             };
     
             $.ajax({
@@ -40,9 +41,9 @@
                     console.log("success = " + response.success);
                     console.log("message = " + response.message);
                                         
-                    $("#critCity").val("");
-                    $("#critCat").val("");
-                    $("#critKeyword").val("");                    
+                    $("#city").val("");
+                    $("#cat").val("");
+                    $("#keyword").val("");                    
                 },
                 data: JSON.stringify(searchCrit)
             });
@@ -55,14 +56,14 @@
 <h4>New Criteria</h4>
 
 Cities:
-<select name="critCity">
+<select name="cityId" id="cityId">
     <c:forEach items="${cities}" var="city">
         <option value="${city.id}">${city.cityName}</option>
     </c:forEach>
 </select>
 
 <span style="padding-left: 5px;">Category:
-   <select name="critCat">
+   <select name="category" id="category">
     <c:forEach items="${cats}" var="cat">
         <option value="${cat.categoryName}">${cat.categoryName}</option>
     </c:forEach>
@@ -71,18 +72,18 @@ Cities:
 &nbsp;&nbsp;
 <br/><br/>
 <span style="padding-left: 5px;">Keyword:
-    <input class="form-control input-sm" type="text" name="critKeyword" value="" style="width: 25%;"/>
+    <input class="form-control input-sm" type="text" name="keyword" id="keyword" value="" style="width: 25%;"/>
 </span>
 <br/>
 &nbsp;&nbsp;
-<a href="#" onclick="submitForm(); return false;"><span class="btn btn-primary" style="padding-left: 10px;">Submit</span></a>
+<a href="#" onclick="submitForm();"><span class="btn btn-primary" style="padding-left: 5px;">Submit</span></a>
 </div>
 
 <div class="alert alert-success" style="padding: 5px; margin: 10px;">
 
     Saved Criteria:<br/>
     <c:forEach items="${searchCrits}" var="crit">
-        <c:out value="${crit.category}" /> <c:out value="${crit.keyword}" /> <c:out value="${crit.cities}" />
+        <c:out value="${crit.category}" /> <c:out value="${crit.keyword}" /> <c:out value="${crit.city.cityName}" />
     </c:forEach>
 </div>
 

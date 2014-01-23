@@ -15,7 +15,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,7 +47,7 @@ public class User extends DomainObject implements Serializable
 	@Sort
 	public Set<Role> roles;	
 	
-	private SearchConfig searchConfig;
+	private List<SearchCriteria> searchCriteria;
 	private List<SearchObject> searchObjects;
 		
 	private Boolean isVerified;
@@ -164,16 +163,16 @@ public class User extends DomainObject implements Serializable
 		getRoles().add(role);
 	}
 
-	@OneToOne(optional = true)
-	@JoinColumn(name = "SEARCH_CONFIG_ID")
-	public SearchConfig getSearchConfig()
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SEARCH_CRIT_ID")
+	public List<SearchCriteria> getSearchCriteria()
 	{
-		return searchConfig;
+		return this.searchCriteria;
 	}
 
-	public void setSearchConfig(SearchConfig searchConfig)
+	public void setSearchCriteria(List<SearchCriteria> aSearchCriteria)
 	{
-		this.searchConfig = searchConfig;
+		this.searchCriteria = aSearchCriteria;
 	}
 	
 	@JsonIgnore

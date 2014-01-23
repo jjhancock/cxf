@@ -3,12 +3,11 @@
  */
 package com.cxf.domain;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,8 +20,9 @@ public class SearchCriteria extends DomainObject
 {
 
 	private String category;
-	private List<City> cities;
+	private City city;
 	private String keyword;
+	private User owningUser;
 	
 	public SearchCriteria()
 	{
@@ -40,15 +40,15 @@ public class SearchCriteria extends DomainObject
 		this.category = category;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, targetEntity = City.class)
-	public List<City> getCities()
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = City.class)
+	public City getCity()
 	{
-		return cities;
+		return city;
 	}
 	
-	public void setCities(List<City> cities)
+	public void setCity(City aCity)
 	{
-		this.cities = cities;
+		this.city = aCity;
 	}
 	
 	@Column(name = "KEYWORD", nullable = false)
@@ -60,6 +60,18 @@ public class SearchCriteria extends DomainObject
 	public void setKeyword(String keyword)
 	{
 		this.keyword = keyword;
+	}
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "OWNING_USER_ID", nullable = false)
+	public User getOwningUser()
+	{
+		return owningUser;
+	}
+
+	public void setOwningUser(User owningUser)
+	{
+		this.owningUser = owningUser;
 	}
 
 }

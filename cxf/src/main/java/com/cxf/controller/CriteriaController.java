@@ -4,6 +4,7 @@
 package com.cxf.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cxf.domain.CategoryEnum;
+import com.cxf.domain.SearchCriteria;
 import com.cxf.service.CityService;
-import com.cxf.service.SearchConfigService;
+import com.cxf.service.SearchCriteriaService;
 import com.cxf.service.UserService;
 
 /**
@@ -32,7 +34,7 @@ public class CriteriaController
 	private CityService cService;
 
 	@Autowired
-	private SearchConfigService scService;
+	private SearchCriteriaService scService;
 
 	@Autowired
 	private UserService uService;
@@ -48,10 +50,12 @@ public class CriteriaController
 		ModelAndView result = new ModelAndView("searchCrits");
 		result.getModelMap().put("cities", cService.findAll());
 		result.getModelMap().put("cats", CategoryEnum.values());
+		
+		List<SearchCriteria> myScs = scService.findByOwningUserId(uService.findByUserId(user.getName()).getId());
+		
 		result.getModelMap().put(
-				"searchConfig",
-				scService.findByOwningUserId(uService.findByUserIdAndVerified(
-						user.getName(), Boolean.TRUE).getId()));
+				"searchCrits", myScs
+				);
 		return result;
 	}
 

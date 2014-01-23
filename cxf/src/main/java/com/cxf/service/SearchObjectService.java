@@ -15,5 +15,5 @@ public interface SearchObjectService
 {
 	SearchObject saveAndFlush(SearchObject so);
 	
-	List<SearchObject> findByOwningSearchConfig(Long owningSearchConfigId);
+	List<SearchObject> findByOwningSearchCriteria(Long owningSearchCriteriaId);
 }

@@ -36,9 +36,9 @@ public class SearchObjectServiceImpl implements SearchObjectService
 	}
 
 	@Override
-	public List<SearchObject> findByOwningSearchConfig(Long owningSearchConfigId)
+	public List<SearchObject> findByOwningSearchCriteria(Long owningSearchCriteriaId)
 	{
-		return soRepo.findByOwningSearchConfig(owningSearchConfigId);
+		return soRepo.findByOwningSearchCriteria(owningSearchCriteriaId);
 	}
 
 }

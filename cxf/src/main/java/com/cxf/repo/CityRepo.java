@@ -16,5 +16,7 @@ import com.cxf.domain.City;
 public interface CityRepo extends JpaRepository<City, Long>
 {
 	List<City> findAll();
+	
+	City findById(Long id);
 
 }

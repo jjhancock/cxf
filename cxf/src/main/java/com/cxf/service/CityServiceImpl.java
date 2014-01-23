@@ -38,4 +38,10 @@ public class CityServiceImpl implements CityService
 		return cRepo.findAll();
 	}
 
+	@Override
+	public City findById(Long id)
+	{
+		return cRepo.findById(id);
+	}
+
 }
