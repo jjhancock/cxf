@@ -24,6 +24,7 @@
 		
 		<intercept-url pattern="/dashboard.do" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/viewSearchCrits.do" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/viewCriteriaResults.do" access="hasRole('ROLE_USER')" />
 
 		<!-- RESTful services -->
 		<intercept-url pattern="/rest/*" access="hasRole('ROLE_ANONYMOUS')" />

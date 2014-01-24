@@ -17,5 +17,7 @@ public interface SearchCriteriaRepo extends JpaRepository<SearchCriteria, Long>
 {
 	SearchCriteria saveAndFlush(SearchCriteria so);
 	
+	SearchCriteria findById(Long anId);
+	
 	List<SearchCriteria> findByOwningUserId(Long userId);
 }

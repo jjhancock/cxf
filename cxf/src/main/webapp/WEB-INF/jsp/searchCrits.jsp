@@ -1,5 +1,5 @@
 <%@include file="includes/taglib_includes.jsp"%>
-here: <sec:authentication property="principal.username"/>
+
 <script type="text/javascript">
     function submitForm() {
         alert("submitForm()?");
@@ -76,14 +76,18 @@ Cities:
 </span>
 <br/>
 &nbsp;&nbsp;
-<a href="#" onclick="submitForm();"><span class="btn btn-primary" style="padding-left: 5px;">Submit</span></a>
+<a href="#" onclick="submitForm();"><span class="btn btn-primary" style="margin-left:-5px;">Submit</span></a>
 </div>
 
 <div class="alert alert-success" style="padding: 5px; margin: 10px;">
 
     Saved Criteria:<br/>
     <c:forEach items="${searchCrits}" var="crit">
-        <c:out value="${crit.category}" /> <c:out value="${crit.keyword}" /> <c:out value="${crit.city.cityName}" />
+        <div style="margin: 10px;">
+            <a href="viewCriteriaResults.do?critId=${crit.id}">
+                <c:out value="${crit.category}" /> <c:out value="${crit.keyword}" /> <c:out value="${crit.city.cityName}" /><br/>
+            </a>
+        </div>
     </c:forEach>
 </div>
 

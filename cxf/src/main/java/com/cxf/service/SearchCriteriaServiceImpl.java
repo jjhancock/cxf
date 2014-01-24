@@ -46,4 +46,10 @@ public class SearchCriteriaServiceImpl implements SearchCriteriaService
 		return scRepo.findByOwningUserId(userId);
 	}
 
+	@Override
+	public SearchCriteria findById(Long anId)
+	{
+		return scRepo.findById(anId);
+	}
+
 }

@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
@@ -34,11 +35,21 @@ public class SearchObject extends DomainObject implements Serializable
 	private SearchCriteria owningSearchCriteria;
 	private String postingBody;
 	private List<ImageLink> imageLinks;
-	private String title;	
+	private String title;
+	private String link;
 
 	public SearchObject()
 	{
 		super();
+	}
+	
+	@Transient
+	public static SearchObject newInstance(String link, SearchCriteria osc)
+	{
+		SearchObject result = new SearchObject();
+		result.setLink(link);
+		result.setOwningSearchCriteria(osc);
+		return result;
 	}
 
 	/*
@@ -120,6 +131,17 @@ public class SearchObject extends DomainObject implements Serializable
 	public void setTitle(String aTitle)
 	{
 		this.title = aTitle;
+	}
+
+	@Column(name = "LINK", nullable = false, unique = true)
+	public String getLink()
+	{
+		return link;
+	}
+
+	public void setLink(String link)
+	{
+		this.link = link;
 	}
 
 }

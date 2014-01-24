@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cxf.domain.SearchObject;
 import com.cxf.repo.SearchObjectRepo;
@@ -30,15 +31,16 @@ public class SearchObjectServiceImpl implements SearchObjectService
 	}
 
 	@Override
+	@Transactional
 	public SearchObject saveAndFlush(SearchObject so)
 	{
 		return soRepo.saveAndFlush(so);
 	}
 
 	@Override
-	public List<SearchObject> findByOwningSearchCriteria(Long owningSearchCriteriaId)
+	public List<SearchObject> findByOwningSearchCriteriaId(Long owningSearchCriteriaId)
 	{
-		return soRepo.findByOwningSearchCriteria(owningSearchCriteriaId);
+		return soRepo.findByOwningSearchCriteriaId(owningSearchCriteriaId);
 	}
 
 }

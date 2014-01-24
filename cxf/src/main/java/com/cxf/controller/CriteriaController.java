@@ -15,8 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cxf.domain.CategoryEnum;
 import com.cxf.domain.SearchCriteria;
+import com.cxf.domain.User;
 import com.cxf.service.CityService;
+import com.cxf.service.Scraper;
 import com.cxf.service.SearchCriteriaService;
+import com.cxf.service.SearchObjectService;
 import com.cxf.service.UserService;
 
 /**
@@ -35,6 +38,12 @@ public class CriteriaController
 
 	@Autowired
 	private SearchCriteriaService scService;
+	
+	@Autowired
+	private SearchObjectService soService;
+	
+	@Autowired
+	private Scraper scraper;
 
 	@Autowired
 	private UserService uService;
@@ -57,6 +66,18 @@ public class CriteriaController
 				"searchCrits", myScs
 				);
 		return result;
+	}
+	
+	@RequestMapping(value = "/viewCriteriaResults.do", method = RequestMethod.GET)
+	public ModelAndView viewCriteriaResults(Principal p, Long critId)
+	{
+		ModelAndView mav = new ModelAndView("viewSearchResults");		
+		SearchCriteria sc = scService.findById(critId);
+		scraper.setSearchCrit(sc);
+		scraper.run();				
+		
+		mav.getModelMap().put("searchResults", soService.findByOwningSearchCriteriaId(sc.getId()));		
+		return mav;
 	}
 
 }

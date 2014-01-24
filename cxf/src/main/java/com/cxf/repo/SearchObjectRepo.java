@@ -17,5 +17,5 @@ public interface SearchObjectRepo extends JpaRepository<SearchObject, Long>
 {
 	SearchObject saveAndFlush(SearchObject so);
 	
-	List<SearchObject> findByOwningSearchCriteria(Long owningSearchCriteriaId);
+	List<SearchObject> findByOwningSearchCriteriaId(Long owningSearchCriteriaId);
 }
