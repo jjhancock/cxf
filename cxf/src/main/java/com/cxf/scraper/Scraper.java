@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.cxf.service;
+package com.cxf.scraper;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.cxf.domain.SearchCriteria;
 import com.cxf.domain.SearchObject;
+import com.cxf.service.SearchObjectService;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
