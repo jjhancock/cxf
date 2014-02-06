@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
@@ -30,6 +31,7 @@ import org.hibernate.annotations.Sort;
  */
 @Entity
 @Table(name = "USER")
+@XmlRootElement
 public class User extends DomainObject implements Serializable
 {
 	private static final long serialVersionUID = -5355316429315818946L;

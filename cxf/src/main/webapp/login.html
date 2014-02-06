@@ -1,0 +1,35 @@
+
+<script>
+function logMeIn()
+{
+    alert("about to attempt ajax post!");
+    
+    var user = {
+            userId: $("#userId").val(),
+            password: $("#password").val()
+        };
+    
+    $.ajax({
+        url: 'rest/authenticate/me',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: true,
+        success: function (response, textStatus, jqXHR) {
+            console.log("success = " + response.success);
+            console.log("message = " + response.message);
+                                
+            alert("success!");                  
+        },
+        data: JSON.stringify(user)
+    });	
+}
+</script>
+
+<div style="margin-left: 10%;">
+	<form>
+		<input type="text" name="userId" id="userId" /> 
+		<input type="password" name="password" id="password" /> 
+		<a href="#" class="btn" onclick="logMeIn(); return false;" >Log In</a>
+    </form>
+</div>

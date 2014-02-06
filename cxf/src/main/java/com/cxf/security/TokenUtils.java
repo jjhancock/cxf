@@ -28,7 +28,6 @@ public class TokenUtils
 
 	public static String computeSignature(UserDetails userDetails, long expires)
 	{
-
 		StringBuilder signatureBuilder = new StringBuilder();
 		signatureBuilder.append(userDetails.getUsername());
 		signatureBuilder.append(":");
@@ -76,6 +75,8 @@ public class TokenUtils
 			return false;
 		}
 
+		System.out.println("here = " + TokenUtils.computeSignature(userDetails,
+				expires));
 		return signature.equals(TokenUtils.computeSignature(userDetails,
 				expires));
 	}
