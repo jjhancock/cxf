@@ -33,6 +33,8 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException
 	{
+		
+		//X-Auth-Token justin.hancock:1591659787065:914bb599115c591d69cc34810aba11ef
 
 		if (!(request instanceof HttpServletRequest))
 		{
