@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * @author justin.hancock
@@ -16,6 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SEARCH_CRIT")
+@XmlRootElement
 public class SearchCriteria extends DomainObject
 {
 
@@ -62,6 +66,7 @@ public class SearchCriteria extends DomainObject
 		this.keyword = keyword;
 	}
 
+	@JsonIgnore
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "OWNING_USER_ID", nullable = false)
 	public User getOwningUser()

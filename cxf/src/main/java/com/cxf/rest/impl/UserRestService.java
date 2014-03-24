@@ -17,11 +17,13 @@ import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cxf.domain.Role;
 import com.cxf.domain.User;
 import com.cxf.service.PasswordService;
 import com.cxf.service.RoleService;
+import com.cxf.service.SearchCriteriaService;
 import com.cxf.service.UserService;
 import com.cxf.web.StatusResponse;
 
@@ -39,6 +41,9 @@ public class UserRestService
 	
 	@Autowired
 	private RoleService rService;
+	
+	@Autowired
+	private SearchCriteriaService scService;
 	
 	@Autowired
 	private UserService uService;

@@ -3,10 +3,8 @@
  */
 package com.cxf.rest.impl;
 
-import java.security.Principal;
 import java.util.List;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -24,7 +22,7 @@ import com.cxf.service.CityService;
  * @author justin.hancock
  *
  */
-@Path("/city")
+@Path("/secure/city")
 @Service("cityRestService")
 public class CityRestService extends RestServiceImpl
 {
@@ -45,9 +43,8 @@ public class CityRestService extends RestServiceImpl
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public List<City> getCities(@Context SecurityContext sc)
 	{
-		Principal p = sc.getUserPrincipal();
-		
-		Long id = getUserId(sc);
+//		Principal p = sc.getUserPrincipal();		
+//		Long id = getUserId(sc);
 		
 		return cService.findAll();		
 	}

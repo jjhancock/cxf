@@ -35,6 +35,7 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean
 	{
 		
 		//X-Auth-Token justin.hancock:1591659787065:914bb599115c591d69cc34810aba11ef
+		// good one: justin.hancock:1591659787065:b6860537c1ba17aa8ae852058957d951
 
 		if (!(request instanceof HttpServletRequest))
 		{

@@ -13,7 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -149,7 +148,7 @@ public class User extends DomainObject implements Serializable
 		this.loginBeforeLast = loginBeforeLast;
 	}
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
 	public Set<Role> getRoles()
 	{
 		return (this.roles == null ? new HashSet<Role>() : this.roles);
@@ -165,7 +164,7 @@ public class User extends DomainObject implements Serializable
 		getRoles().add(role);
 	}
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SEARCH_CRIT_ID")
 	public List<SearchCriteria> getSearchCriteria()
 	{

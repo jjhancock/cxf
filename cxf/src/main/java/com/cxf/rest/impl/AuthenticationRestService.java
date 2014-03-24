@@ -7,9 +7,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -45,9 +45,11 @@ public class AuthenticationRestService
 	// this needs to return success and a token, otherwise failure with no token
 	@POST
 	@Path("/me")
-	@Consumes(MediaType.APPLICATION_JSON_VALUE)
-	@Produces("application/json")
-	public StatusResponse login(User user)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public StatusResponse login(User user) // this also works @ParamPath("userId") String userId, @PathParam("password") String password.
+	// the key here is to make SURE that you actually POST, via POSTER, actual JSON.  The issue I had with binding was that it wasn't 
+	// converting the data to JSON as I had expected, and the mime type was application-form-encoded or some shit.
 	{
 		Boolean result = false;
 		String token = null;

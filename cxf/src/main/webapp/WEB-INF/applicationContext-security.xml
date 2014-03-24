@@ -16,7 +16,8 @@
 		           authentication-manager-ref="authenticationManager">
 		<security:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
 		<security:intercept-url pattern="/rest/authenticate/me" access="permitAll" />
-		<security:intercept-url pattern="/rest/**" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/app/**" access="permitAll" />
+		<security:intercept-url pattern="/rest/secure/**" access="hasRole('ROLE_USER')" />
 	</security:http>
 
 	<security:authentication-manager id="authenticationManager">

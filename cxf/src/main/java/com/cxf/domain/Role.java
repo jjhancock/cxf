@@ -4,19 +4,19 @@
 package com.cxf.domain;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author jjhancock
  * 
  */
 @Entity
+@XmlRootElement
 @Table(name = "ROLE", uniqueConstraints =
 { @UniqueConstraint(columnNames =
 { "ROLE_NAME" }) })
@@ -26,7 +26,6 @@ public class Role extends DomainObject implements Serializable,
 	private static final long serialVersionUID = -2154659537673765358L;
 	private String roleDescription;
 	private String roleName;
-	private Set<User> users;
 
 	@Override
 	public int compareTo(Role compareRole)
@@ -56,14 +55,4 @@ public class Role extends DomainObject implements Serializable,
 		this.roleName = roleName;
 	}
 
-	@ManyToMany(mappedBy = "roles")
-	public Set<User> getUsers()
-	{
-		return users;
-	}
-
-	public void setUsers(Set<User> users)
-	{
-		this.users = users;
-	}
 }
